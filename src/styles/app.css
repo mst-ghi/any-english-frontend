@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'IranSans';
+  src: url('/fonts/iransans/IRANSansWeb.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'IranSans', Arial, Helvetica, sans-serif !important;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blur-text {
+  color: transparent !important;
+  text-shadow: 0 0 8px #000;
+}
+
+.first-letter-uppercase::first-letter {
+  text-transform: uppercase;
+}
+
+@keyframes fade-in-show {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.profile-sidebar {
+  position: fixed !important;
+  top: 50 !important;
+  left: 20px;
+  height: calc(100vh - 104px);
+  width: 300px;
+}
+
+.profile-content {
+  width: calc(100vw - 415px);
+  min-height: calc(100vh - 100px);
+}

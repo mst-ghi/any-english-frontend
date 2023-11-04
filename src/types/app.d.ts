@@ -1,0 +1,65 @@
+export declare global {
+  declare module '*.png' {
+    const value: any;
+    export = value;
+  }
+
+  type MakeRequestMethods = 'GET' | 'POST' | 'PUT' | 'DELETE';
+
+  type TTextDisplay = 'en' | 'both' | 'fa' | string;
+
+  interface IPaginationMeta {
+    total_docs: number;
+    take: number;
+    total_pages: number;
+    page: number;
+    has_prev_page: boolean;
+    has_next_page: boolean;
+    prev: number;
+    next: number;
+  }
+
+  interface ICallRequestResponse {
+    status: number;
+    message: string;
+    isSuccess: boolean;
+    isUnprocessable: boolean;
+    errors: SetStateAction<FormErrors>;
+    meta?: IPaginationMeta;
+  }
+
+  type TUserAccess = 'admin' | 'operator' | 'user';
+  type TUserStatus = 'active' | 'suspended';
+
+  interface ITokens {
+    token: string;
+    r_token: string;
+    expires_at: string;
+  }
+
+  interface IUser {
+    id: string;
+    email: string;
+    fullname: string;
+    access: TUserAccess;
+    status: TUserStatus;
+    created_at: string;
+  }
+
+  interface IPhrase {
+    id: string;
+    word_id: string;
+    phrase: string;
+    meaning: string;
+    created_at: string;
+  }
+
+  interface IWord {
+    id: string;
+    word: string;
+    meaning: string;
+    created_at: string;
+
+    phrases?: IPhrase[];
+  }
+}

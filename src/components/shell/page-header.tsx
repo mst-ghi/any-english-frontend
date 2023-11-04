@@ -1,0 +1,151 @@
+import { useApp, useThemeStyle } from '@/hooks';
+import { useDisclosure } from '@mantine/hooks';
+import Link from 'next/link';
+
+import {
+  Burger,
+  Button,
+  Card,
+  Divider,
+  Drawer,
+  Flex,
+  Image,
+  Text,
+} from '@mantine/core';
+
+import { UserAvatarHeader } from '.';
+import { ColorSchemeToggle } from '..';
+import { IconPlus } from '@tabler/icons-react';
+import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
+
+const links: { label: string; href: string }[] = [
+  { label: 'Words', href: '/words' },
+  { label: 'Phrases', href: '/phrases' },
+];
+
+const PageHeader = () => {
+  const pathname = usePathname();
+  const [opened, { open, close }] = useDisclosure();
+  const { isDesktop, isMobile } = useThemeStyle();
+  const { isLoggedIn, isAdmin, statsCount } = useApp();
+
+  useEffect(() => {
+    close();
+  }, [pathname]);
+
+  return (
+    <Card h={60} py="xs">
+      <Flex direction="row" align="center" justify="space-between">
+        {isDesktop && (
+          <Flex direction="row" align="center" gap="xl">
+            <Link href="/">
+              <Image height={40} src="/logo-text.png" alt="Logo" />
+            </Link>
+
+            <Flex direction="row" align="center" gap="xl">
+              {links.map((el, idx) => {
+                return (
+                  <Link href={el.href} key={`${el.label}-${idx}`}>
+                    <Text
+                      size="xl"
+                      fw={500}
+                      c={pathname === el.href ? 'blue' : undefined}
+                    >
+                      {el.label}
+                      {statsCount.wordsCount && el.href === '/words' && (
+                        <span style={{ marginLeft: 4, fontSize: 16 }}>
+                          &#9758; {statsCount.wordsCount}
+                        </span>
+                      )}
+
+                      {statsCount.phrasesCount && el.href === '/phrases' && (
+                        <span style={{ marginLeft: 4, fontSize: 16 }}>
+                          &#9758; {statsCount.phrasesCount}
+                        </span>
+                      )}
+                    </Text>
+                  </Link>
+                );
+              })}
+            </Flex>
+          </Flex>
+        )}
+
+        {isMobile && (
+          <Burger
+            opened={opened}
+            onClick={open}
+            aria-label="Toggle navigation"
+          />
+        )}
+
+        <Flex direction="row" align="center" gap="md">
+          <ColorSchemeToggle />
+
+          {!isLoggedIn && (
+            <Button variant="outline" component={Link} href="/auth/login">
+              Login / Register
+            </Button>
+          )}
+
+          <UserAvatarHeader />
+        </Flex>
+      </Flex>
+
+      <Drawer
+        withCloseButton={false}
+        size="72%"
+        opened={opened}
+        onClose={close}
+        pos="relative"
+        title={<Image height={36} src="/logo-text.png" alt="Logo" />}
+      >
+        <Divider mb="lg" />
+
+        <Flex direction="column" gap="md" style={{ flex: 1 }}>
+          {links.map((el, idx) => {
+            return (
+              <Link href={el.href} key={`${el.label}-${idx}-drawer`}>
+                <Text
+                  size="xl"
+                  fw={500}
+                  c={pathname === el.href ? 'blue' : undefined}
+                >
+                  {el.label}
+                  {statsCount.wordsCount && el.href === '/words' && (
+                    <span style={{ marginLeft: 4, fontSize: 16 }}>
+                      &#9758; {statsCount.wordsCount}
+                    </span>
+                  )}
+
+                  {statsCount.phrasesCount && el.href === '/phrases' && (
+                    <span style={{ marginLeft: 4, fontSize: 16 }}>
+                      &#9758; {statsCount.phrasesCount}
+                    </span>
+                  )}
+                </Text>
+              </Link>
+            );
+          })}
+        </Flex>
+
+        {isAdmin && (
+          <Button
+            leftSection={<IconPlus size={26} />}
+            pos="absolute"
+            bottom={20}
+            size="lg"
+            w="90%"
+            component={Link}
+            href="/new-word"
+          >
+            New Word
+          </Button>
+        )}
+      </Drawer>
+    </Card>
+  );
+};
+
+export default PageHeader;
