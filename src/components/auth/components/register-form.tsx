@@ -5,13 +5,13 @@ import {
   Card,
   Divider,
   Flex,
-  Image,
   PasswordInput,
   Text,
   TextInput,
 } from '@mantine/core';
 import Link from 'next/link';
 import { useThemeStyle } from '@/hooks';
+import { Logo } from '@/components';
 
 type RegisterFormValues = {
   email: string;
@@ -45,7 +45,7 @@ const RegisterForm = ({
       withBorder={withBorder}
     >
       <Flex direction="column" gap="lg" align="center" mb={20}>
-        <Image src="/logo-text.png" alt="logo" height={40} />
+        <Logo height={40} />
 
         <Text size="xl" fw={600}>
           Register Form

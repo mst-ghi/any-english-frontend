@@ -1,3 +1,4 @@
+export { default as Logo } from './logo';
 export { default as FullLoader } from './full-loader';
 export { default as PageLoader } from './page-loader';
 export { default as ColorSchemeToggle } from './color-schema-toggle';

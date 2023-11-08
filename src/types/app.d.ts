@@ -52,6 +52,8 @@ export declare global {
     phrase: string;
     meaning: string;
     created_at: string;
+
+    lightners?: ILightner[];
   }
 
   interface IWord {
@@ -61,5 +63,22 @@ export declare global {
     created_at: string;
 
     phrases?: IPhrase[];
+    lightners?: ILightner[];
+  }
+
+  type TLightnerLevel = 0 | 1 | 2 | 3 | 4;
+  type TLightnerType = 'word' | 'phrase';
+
+  interface ILightner {
+    id: string;
+    user_id: string;
+    word_id?: string;
+    phrase_id?: string;
+    level: TLightnerLevel;
+    created_at?: string;
+
+    user?: IUser;
+    word?: IWord;
+    phrase?: IPhrase;
   }
 }

@@ -1,19 +1,17 @@
 import {
-  ActionIcon,
   Button,
   Card,
   Divider,
   Flex,
-  Group,
-  Image,
   PasswordInput,
   Text,
   TextInput,
 } from '@mantine/core';
-import { IconAt, IconKey, IconRefresh } from '@tabler/icons-react';
+import { IconAt, IconKey } from '@tabler/icons-react';
 import { useAuth, useLoginForm } from '../hooks';
 import Link from 'next/link';
 import { useThemeStyle } from '@/hooks';
+import { Logo } from '@/components';
 
 type LoginFormValues = {
   email: string;
@@ -46,7 +44,7 @@ const LoginForm = ({
       withBorder={withBorder}
     >
       <Flex direction="column" gap="lg" align="center" mb={20}>
-        <Image src="/logo-text.png" alt="logo" height={40} />
+        <Logo height={40} />
 
         <Text size="xl" fw={600}>
           Login Form

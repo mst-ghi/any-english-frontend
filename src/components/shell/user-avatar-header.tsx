@@ -1,6 +1,6 @@
 import { Avatar, Flex, Menu, Text } from '@mantine/core';
 import { openConfirmModal } from '@mantine/modals';
-import { IconLogout, IconUserPin } from '@tabler/icons-react';
+import { IconBulb, IconLogout, IconUserPin } from '@tabler/icons-react';
 import { useAuth } from '../auth';
 import Link from 'next/link';
 
@@ -28,7 +28,7 @@ const UserAvatarHeader = () => {
         <Menu.Divider mx="xs" />
 
         <Menu.Item
-          leftSection={<IconUserPin />}
+          leftSection={<IconUserPin size={20} />}
           component={Link}
           href="/profile"
         >
@@ -36,8 +36,16 @@ const UserAvatarHeader = () => {
         </Menu.Item>
 
         <Menu.Item
+          leftSection={<IconBulb size={20} />}
+          component={Link}
+          href="/profile/my-lightner"
+        >
+          My Lightner
+        </Menu.Item>
+
+        <Menu.Item
           color="red"
-          leftSection={<IconLogout />}
+          leftSection={<IconLogout size={20} />}
           onClick={() => {
             openConfirmModal({
               title: (

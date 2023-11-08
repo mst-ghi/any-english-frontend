@@ -1,5 +1,4 @@
 export { default as BaseShell } from './base-shell';
-export { default as ProfileShell } from './profile-shell';
 export { default as Page } from './page';
 export { default as EmptyPage } from './empty-page';
 export { default as PageHeader } from './page-header';

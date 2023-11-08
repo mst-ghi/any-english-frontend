@@ -17,16 +17,23 @@ export interface PageProps {
   title: string;
   loading?: boolean;
   transition?: MantineTransition;
+  unstyled?: boolean;
 }
 
-const Page = ({ title, loading, children, transition = 'fade' }: PageProps) => {
+const Page = ({
+  title,
+  loading,
+  children,
+  transition = 'fade',
+  unstyled = false,
+}: PageProps) => {
   const { isDesktop } = useThemeStyle();
 
   useDocumentTitle(`${Envs.app.title} - ${title}`);
   const [scroll, scrollTo] = useWindowScroll();
 
   return (
-    <Container unstyled={!isDesktop}>
+    <Container unstyled={!isDesktop || unstyled}>
       <Transition
         transition={transition}
         mounted={!loading}

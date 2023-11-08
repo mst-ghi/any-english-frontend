@@ -14,7 +14,7 @@ import {
 } from '@mantine/core';
 
 import { UserAvatarHeader } from '.';
-import { ColorSchemeToggle } from '..';
+import { ColorSchemeToggle, Logo } from '..';
 import { IconPlus } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
@@ -35,12 +35,12 @@ const PageHeader = () => {
   }, [pathname]);
 
   return (
-    <Card h={60} py="xs">
+    <Card h={60} py="xs" radius={0}>
       <Flex direction="row" align="center" justify="space-between">
         {isDesktop && (
           <Flex direction="row" align="center" gap="xl">
             <Link href="/">
-              <Image height={40} src="/logo-text.png" alt="Logo" />
+              <Logo height={40} />
             </Link>
 
             <Flex direction="row" align="center" gap="xl">
@@ -99,7 +99,7 @@ const PageHeader = () => {
         opened={opened}
         onClose={close}
         pos="relative"
-        title={<Image height={36} src="/logo-text.png" alt="Logo" />}
+        title={<Logo height={36} />}
       >
         <Divider mb="lg" />
 

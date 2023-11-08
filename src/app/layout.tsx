@@ -1,8 +1,10 @@
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 import '@/styles/app.css';
 
 import { ColorSchemeScript } from '@mantine/core';
 import { Envs } from '@/utils';
+
 import RootEntry from './entry';
 import initData from './initData';
 

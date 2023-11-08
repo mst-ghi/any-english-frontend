@@ -2,8 +2,9 @@
 
 import { useRouter } from 'next/navigation';
 import { Fragment, useEffect } from 'react';
-import { FullLoader, ProfileShell } from '@/components';
+import { FullLoader } from '@/components';
 import { useApp } from '@/hooks';
+import { Box } from '@mantine/core';
 
 function ProfileLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -11,14 +12,14 @@ function ProfileLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      router.push('/');
+      router.push('/auth/login');
     }
   }, [isLoggedIn]);
 
   return (
     <Fragment>
       {(isLoading || !isLoggedIn) && <FullLoader />}
-      {!isLoading && isLoggedIn && <ProfileShell>{children}</ProfileShell>}
+      {!isLoading && isLoggedIn && <Box>{children}</Box>}
     </Fragment>
   );
 }

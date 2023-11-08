@@ -1,4 +1,4 @@
-import * as DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify';
 
 const useDOMPurify = ({ value }: { value?: string } = { value: '' }) => {
   return {

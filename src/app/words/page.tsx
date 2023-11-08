@@ -1,7 +1,7 @@
 'use client';
 import { ImageStates, Page, WordCard } from '@/components';
 import { useApp, useFetchWords } from '@/hooks';
-import { Button, Flex, Group, Pagination, TextInput } from '@mantine/core';
+import { Flex, Group, Pagination, TextInput } from '@mantine/core';
 import { useDebouncedState } from '@mantine/hooks';
 import { IconSearch } from '@tabler/icons-react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -18,7 +18,10 @@ const WordsPage = () => {
     500,
   );
 
-  const { data, isFetching } = useFetchWords({ page, search: searchValue });
+  const { data, isFetching } = useFetchWords({
+    page,
+    search: searchValue,
+  });
 
   const onSearchAction = (str: string) => {
     setSearchValue(str);

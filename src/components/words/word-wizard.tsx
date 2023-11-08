@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ActionIcon, Button, Card, Flex, Image, Title } from '@mantine/core';
-import { WordCard, WordForm } from '@/components';
+import { Logo, WordCard, WordForm } from '@/components';
 import { openModal } from '@mantine/modals';
 import useRequest from '@/hooks/useRequest';
 import { IconRefresh, IconX } from '@tabler/icons-react';
@@ -31,7 +31,7 @@ const WordWizard = () => {
   return (
     <Flex direction="column" gap="xl">
       <Flex direction="column" align="center">
-        <Image src="/logo-text.png" alt="logo" maw={420} />
+        <Logo maw={420} />
       </Flex>
 
       <Card w="100%" p="lg">
@@ -67,11 +67,10 @@ const WordWizard = () => {
 
             <WordCard
               word={word}
-              onReload={refetchWord}
               onEditClick={() => {
                 openModal({
                   title: 'Update Word',
-                  children: <WordForm initWord={word} onSubmit={setWord} />,
+                  children: <WordForm initWord={word} onSubmit={refetchWord} />,
                   closeOnClickOutside: false,
                   closeOnEscape: false,
                   size: 'lg',
@@ -96,7 +95,7 @@ const WordWizard = () => {
             </Flex>
           </Card.Section>
 
-          <WordCard word={lastWord} onReload={refetchLastWord} />
+          <WordCard word={lastWord} />
         </Card>
       )}
     </Flex>

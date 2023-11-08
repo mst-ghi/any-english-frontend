@@ -1,8 +1,7 @@
 import { ActionIcon, Flex } from '@mantine/core';
-import { TextBlur } from '..';
-import { useThemeStyle } from '@/hooks';
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { IconVolume } from '@tabler/icons-react';
+import { TextBlur } from '..';
 
 const WordPreview = ({
   word,
@@ -11,27 +10,10 @@ const WordPreview = ({
   word: IWord;
   display?: TTextDisplay;
 }) => {
-  const { isLightTheme } = useThemeStyle();
   const { speak, speaking } = useSpeechSynthesis();
 
   return (
-    <Flex
-      direction="row"
-      align="center"
-      justify="space-between"
-      px="md"
-      py={4}
-      styles={{
-        root: {
-          border: `1px solid ${
-            isLightTheme
-              ? 'var(--mantine-color-gray-3)'
-              : 'var(--mantine-color-dark-4)'
-          }`,
-          borderRadius: 'var(--mantine-radius-md)',
-        },
-      }}
-    >
+    <Flex direction="row" align="center" justify="space-between" px="sm" pb={4}>
       <Flex direction="row" align="center" gap={4}>
         <ActionIcon
           disabled={speaking}

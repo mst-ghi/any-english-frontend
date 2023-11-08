@@ -38,11 +38,11 @@ a {
   position: fixed !important;
   top: 50 !important;
   left: 20px;
-  height: calc(100vh - 104px);
+  height: calc(100vh - 105px);
   width: 300px;
 }
 
 .profile-content {
-  width: calc(100vw - 415px);
-  min-height: calc(100vh - 100px);
+  width: calc(100vw - 360px);
+  min-height: calc(100vh - 120px);
 }
