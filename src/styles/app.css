@@ -19,6 +19,10 @@ a {
   text-shadow: 0 0 8px #000;
 }
 
+.mantine-Text-root::first-letter {
+  text-transform: uppercase;
+}
+
 .first-letter-uppercase::first-letter {
   text-transform: uppercase;
 }

@@ -19,10 +19,19 @@ const useFetchData = () => {
     return response?.phrase;
   };
 
+  const fetchConversation = async (conversationId: string) => {
+    const response = await callRequest<{ conversation: IConversation }>(
+      'GET',
+      `/api/v1/conversations/${conversationId}`,
+    );
+    return response?.conversation;
+  };
+
   return {
     isCalling,
     fetchWord,
     fetchPhrase,
+    fetchConversation,
   };
 };
 

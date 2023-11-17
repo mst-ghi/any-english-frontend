@@ -81,4 +81,23 @@ export declare global {
     word?: IWord;
     phrase?: IPhrase;
   }
+
+  interface IConversationItem {
+    id: string;
+    conversation_id: string;
+    character: string;
+    phrase: string;
+    meaning: string;
+    created_at?: string;
+  }
+
+  interface IConversation {
+    id: string;
+    title: string;
+    meaning: string;
+    characters: string[];
+    created_at?: string;
+
+    items?: IConversationItem[];
+  }
 }

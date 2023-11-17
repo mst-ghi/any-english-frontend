@@ -18,10 +18,12 @@ import { ColorSchemeToggle, Logo } from '..';
 import { IconPlus } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import CreationActionHeader from './creation-action-header';
 
 const links: { label: string; href: string }[] = [
   { label: 'Words', href: '/words' },
   { label: 'Phrases', href: '/phrases' },
+  { label: 'Conversations', href: '/conversations' },
 ];
 
 const PageHeader = () => {
@@ -88,6 +90,8 @@ const PageHeader = () => {
               Login / Register
             </Button>
           )}
+
+          <CreationActionHeader />
 
           <UserAvatarHeader />
         </Flex>

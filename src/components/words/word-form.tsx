@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Group,
-  SimpleGrid,
-  Text,
-  TextInput,
-  Title,
-} from '@mantine/core';
+import { Box, Button, Group, SimpleGrid, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import {
   IconAlignBoxLeftMiddle,

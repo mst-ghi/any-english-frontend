@@ -1,27 +1,12 @@
-import { ActionIcon, AppShell, useMantineColorScheme } from '@mantine/core';
-import { IconPlus } from '@tabler/icons-react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-
+import { AppShell, Box, useMantineColorScheme } from '@mantine/core';
 import { useApp, useThemeStyle } from '@/hooks';
 import { PageHeader } from '.';
 import { FadeTransition, FullLoader } from '..';
-import { useMemo } from 'react';
 
 const BaseShell = ({ children }: { children?: React.ReactNode }) => {
-  const pathName = usePathname();
   const { isDesktop } = useThemeStyle();
-  const { isLoading, isAdmin, isOperator } = useApp();
+  const { isLoading } = useApp();
   const { colorScheme } = useMantineColorScheme();
-
-  const isAddBtnVisible = useMemo(() => {
-    return (
-      (isAdmin || isOperator) &&
-      isDesktop &&
-      pathName !== '/new-word' &&
-      !pathName.includes('/profile')
-    );
-  }, [pathName, isLoading, isAdmin, isOperator, isDesktop]);
 
   return (
     <AppShell padding={isDesktop ? 'lg' : 'sm'}>
@@ -37,22 +22,21 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
           pt={isDesktop ? 84 : 72}
           pos="relative"
         >
+          <Box
+            w="100%"
+            h="100%"
+            right={10}
+            top={0}
+            style={{
+              opacity: 0.3,
+              position: 'fixed',
+              backgroundImage: 'url("/bg.png")',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'top right',
+            }}
+          />
           {children}
         </AppShell.Main>
-
-        {isAddBtnVisible && (
-          <ActionIcon
-            size={65}
-            pos="fixed"
-            right={30}
-            bottom={30}
-            radius="xl"
-            component={Link}
-            href="/new-word"
-          >
-            <IconPlus size={36} />
-          </ActionIcon>
-        )}
       </FadeTransition>
     </AppShell>
   );

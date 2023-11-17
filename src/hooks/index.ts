@@ -9,3 +9,4 @@ export { default as useThemeStyle } from './useThemeStyle';
 export { default as useFetchLastWord } from './useFetchLastWord';
 export { default as useFetchLightner } from './useFetchLightner';
 export { default as useLightnerActions } from './useLightnerActions';
+export { default as useFetchConversations } from './useFetchConversations';
