@@ -84,6 +84,7 @@ const PhrasePreview = ({
               variant="transparent"
               radius="md"
               size="sm"
+              color="grape"
               onClick={() => {
                 openModal({
                   title: 'Update Phrase',

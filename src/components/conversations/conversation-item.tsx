@@ -1,8 +1,7 @@
-import { useApp } from '@/hooks';
+import { useApp, useThemeStyle } from '@/hooks';
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { ActionIcon, Box, Button, Card, Flex, Text } from '@mantine/core';
+import { ActionIcon, Button, Card, Divider, Flex, Text } from '@mantine/core';
 import { IconEdit, IconTrash, IconVolume } from '@tabler/icons-react';
-import { Fragment } from 'react';
 import { openConfirmModal, openModal } from '@mantine/modals';
 import { ConversationItemForm } from '.';
 import useRequest from '@/hooks/useRequest';
@@ -20,6 +19,7 @@ const ConversationItem = ({
 }) => {
   const { isAdmin } = useApp();
   const { callRequest } = useRequest();
+  const { theme } = useThemeStyle();
   const { speak, speaking } = useSpeechSynthesis();
 
   const onDeleteItem = async () => {
@@ -30,52 +30,43 @@ const ConversationItem = ({
   };
 
   return (
-    <Card
-      withBorder
-      p="xs"
-      pb={6}
-      radius="xl"
+    <Flex
+      w="100%"
+      direction="row"
+      align="center"
       dir={isActive ? 'rtl' : 'ltr'}
-      miw={264}
-      style={{
-        width: 'fit-content',
-        blockSize: 'fit-content',
-        alignSelf: isActive ? 'flex-end' : 'flex-start',
-      }}
+      pr="md"
     >
-      <Flex direction="row">
-        <Box
-          bg={isActive ? 'green.3' : 'blue.3'}
-          pr={2}
-          pt={5}
-          mb={2}
-          style={{ borderRadius: 10, opacity: 0.8 }}
-        >
-          <Text
-            c="white"
-            fw={700}
-            size="xs"
-            style={{
-              writingMode: 'vertical-rl',
-              textOrientation: 'upright',
-            }}
-          >
-            {item.character.substring(0, 3).toUpperCase()}
-          </Text>
-        </Box>
-
-        <Flex direction="column" px="sm" style={{ flex: 1 }}>
-          <Flex direction="row" align="center" justify="space-between" mb={4}>
+      <Card
+        withBorder
+        p="xs"
+        pb={6}
+        radius="lg"
+        dir={isActive ? 'rtl' : 'ltr'}
+        miw={300}
+        style={{
+          width: 'fit-content',
+          blockSize: 'fit-content',
+          border: `1px dashed ${theme.colors.gray[4]}`,
+        }}
+      >
+        <Card.Section bg="gray.0" p="xs" pb={4}>
+          <Flex direction="row" align="center" justify="space-between">
             <Button
-              color="green"
+              leftSection={<IconVolume size={18} />}
               disabled={speaking}
               variant="light"
               size="xs"
+              radius="lg"
               h={22}
+              styles={{
+                section: {
+                  marginRight: 4,
+                  marginLeft: 4,
+                },
+              }}
               onClick={() => speak({ text: item.phrase, rate: 0.8 })}
-              dir="ltr"
             >
-              <IconVolume size={18} />
               <Text size="xs" fw={500} mt={3} ml={2}>
                 {item.character}
               </Text>
@@ -87,9 +78,11 @@ const ConversationItem = ({
                   variant="transparent"
                   radius="md"
                   size="sm"
+                  color="grape"
                   onClick={() => {
                     openModal({
                       title: 'Update Conversation Item',
+                      size: 'lg',
                       children: (
                         <ConversationItemForm
                           conversationId={item.conversation_id}
@@ -135,7 +128,9 @@ const ConversationItem = ({
               </Flex>
             )}
           </Flex>
+        </Card.Section>
 
+        <Flex direction="column" px={4} mt={4} style={{ flex: 1 }}>
           <Text size="sm" fw={600} dir="ltr">
             {item.phrase}
           </Text>
@@ -143,8 +138,10 @@ const ConversationItem = ({
             {item.meaning}
           </Text>
         </Flex>
-      </Flex>
-    </Card>
+      </Card>
+
+      <Divider w="100%" variant="dashed" />
+    </Flex>
   );
 };
 

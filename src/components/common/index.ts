@@ -9,6 +9,7 @@ export { default as LottiePlayer } from './lottie-player';
 export { default as SearchInput } from './search-input';
 export { default as FadeTransition } from './fade-transition';
 export { default as VoiceInput } from './voice-input';
+export { default as VoiceTextarea } from './voice-textarea';
 
 const ImageStates = dynamic(() => import('./image-states'), {
   ssr: false,

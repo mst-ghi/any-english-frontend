@@ -1,17 +1,15 @@
 import { openModal } from '@mantine/modals';
-import { IconPlus } from '@tabler/icons-react';
-import { ConversationItem, ConversationItemForm } from '.';
+import { IconEdit, IconPlus } from '@tabler/icons-react';
+import { ConversationForm, ConversationItem, ConversationItemForm } from '.';
 import { useEffect, useMemo, useState } from 'react';
 import { ImageStates } from '..';
-import { useApp } from '@/hooks';
+import { useApp, useThemeStyle } from '@/hooks';
 import {
   ActionIcon,
   Alert,
   Box,
   Card,
-  Center,
   Flex,
-  ScrollArea,
   SegmentedControl,
   Text,
 } from '@mantine/core';
@@ -28,6 +26,7 @@ const ConversationPreview = ({
   onReload,
 }: ConversationPreviewProps) => {
   const { isAdmin } = useApp();
+  const { theme } = useThemeStyle();
   const [activeCharacter, setActiveCharacter] = useState<string>();
 
   const hasItems = useMemo(() => {
@@ -54,7 +53,7 @@ const ConversationPreview = ({
 
   return (
     <Card withBorder radius="lg" w="100%">
-      <Alert radius="lg" mb="xs" color="gray">
+      <Alert radius="lg" mb="xs" color="gray" pb={4}>
         <Flex direction="row" align="center" gap="lg" justify="space-between">
           <Box style={{ flex: 1 }}>
             <Text size="lg" fw={500}>
@@ -67,29 +66,50 @@ const ConversationPreview = ({
           </Box>
 
           {isAdmin && !compact && (
-            <ActionIcon
-              size="xl"
-              onClick={() => {
-                openModal({
-                  title: 'New Conversation Item',
-                  children: (
-                    <ConversationItemForm
-                      conversationId={conversation.id}
-                      characters={conversation.characters}
-                      onSubmit={onReload}
-                    />
-                  ),
-                });
-              }}
-            >
-              <IconPlus />
-            </ActionIcon>
+            <Flex direction="row" align="center" gap="md">
+              <ActionIcon
+                size="xl"
+                color="grape"
+                onClick={() => {
+                  openModal({
+                    title: 'Update Conversation',
+                    size: 'lg',
+                    children: (
+                      <ConversationForm
+                        initConversation={conversation}
+                        onSubmit={onReload}
+                      />
+                    ),
+                  });
+                }}
+              >
+                <IconEdit />
+              </ActionIcon>
+
+              <ActionIcon
+                size="xl"
+                onClick={() => {
+                  openModal({
+                    title: 'New Conversation Item',
+                    size: 'lg',
+                    children: (
+                      <ConversationItemForm
+                        conversationId={conversation.id}
+                        characters={conversation.characters}
+                        onSubmit={onReload}
+                      />
+                    ),
+                  });
+                }}
+              >
+                <IconPlus />
+              </ActionIcon>
+            </Flex>
           )}
         </Flex>
-      </Alert>
 
-      <Center>
         <SegmentedControl
+          mt="sm"
           disabled={compact}
           radius="lg"
           w="100%"
@@ -98,20 +118,19 @@ const ConversationPreview = ({
           onChange={setActiveCharacter}
           data={conversation.characters}
           styles={{
+            root: {
+              backgroundColor: theme.colors.gray[0],
+            },
             control: {
               textTransform: 'capitalize',
             },
           }}
         />
-      </Center>
+      </Alert>
 
       {!compact && hasItems && (
-        <Flex mt="md">
-          <ScrollArea mah={300} w="100%" type="always" scrollbarSize={8}>
-            <Flex direction="column" gap={6} pos="relative">
-              {renderItems()}
-            </Flex>
-          </ScrollArea>
+        <Flex direction="column" gap={6} mt="lg" mb="md">
+          {renderItems()}
         </Flex>
       )}
 

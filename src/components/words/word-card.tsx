@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import {
   PhraseForm,
   PhrasePreview,
@@ -94,6 +94,7 @@ const WordCard = ({
             <ActionIcon
               variant="light"
               radius="md"
+              color="dark"
               size="md"
               onClick={() => setIsPhraseVisible(!isPhraseVisible)}
             >
@@ -106,60 +107,61 @@ const WordCard = ({
           )}
 
           {isAdmin && (
-            <ActionIcon
-              size="md"
-              radius="md"
-              onClick={() => {
-                if (onEditClick) {
-                  onEditClick();
-                } else {
+            <Fragment>
+              <ActionIcon
+                size="md"
+                radius="md"
+                h={28}
+                onClick={() => {
                   openModal({
+                    title: 'New Phrase',
                     children: (
-                      <WordForm
-                        initWord={wordData}
-                        onSubmit={() => {
-                          queryClient.invalidateQueries({
-                            queryKey: ['words'],
-                            stale: true,
-                          });
+                      <PhraseForm
+                        word={wordData}
+                        onSubmitDone={async () => {
+                          setWordData(await fetchWord(wordData.id));
+                          setIsPhraseVisible(true);
                         }}
                       />
                     ),
                     closeOnClickOutside: false,
                     closeOnEscape: false,
-                    size: 'lg',
                   });
-                }
-              }}
-            >
-              <IconEdit size={18} />
-            </ActionIcon>
-          )}
+                }}
+              >
+                <IconPlus size={18} />
+              </ActionIcon>
 
-          {isAdmin && (
-            <ActionIcon
-              size="md"
-              radius="md"
-              h={28}
-              onClick={() => {
-                openModal({
-                  title: 'New Phrase',
-                  children: (
-                    <PhraseForm
-                      word={wordData}
-                      onSubmitDone={async () => {
-                        setWordData(await fetchWord(wordData.id));
-                        setIsPhraseVisible(true);
-                      }}
-                    />
-                  ),
-                  closeOnClickOutside: false,
-                  closeOnEscape: false,
-                });
-              }}
-            >
-              <IconPlus size={18} />
-            </ActionIcon>
+              <ActionIcon
+                size="md"
+                radius="md"
+                color="grape"
+                onClick={() => {
+                  if (onEditClick) {
+                    onEditClick();
+                  } else {
+                    openModal({
+                      children: (
+                        <WordForm
+                          initWord={wordData}
+                          onSubmit={() => {
+                            queryClient.invalidateQueries({
+                              queryKey: ['words'],
+                              stale: true,
+                            });
+                          }}
+                        />
+                      ),
+                      closeOnClickOutside: false,
+                      closeOnEscape: false,
+                      size: 'lg',
+                    });
+                  }
+                }}
+              >
+                <IconEdit size={18} />
+              </ActionIcon>
+            </Fragment>
           )}
 
           <WordLightnerAction

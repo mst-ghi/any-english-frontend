@@ -1,11 +1,10 @@
 import useRequest from '@/hooks/useRequest';
-import { Box, Button, Group, Select } from '@mantine/core';
+import { Box, Button, Group, SegmentedControl } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { closeAllModals } from '@mantine/modals';
 import { useEffect } from 'react';
-import { VoiceInput } from '..';
+import { VoiceTextarea } from '..';
 import {
-  IconAdjustmentsStar,
   IconAlignBoxLeftMiddle,
   IconAlignBoxRightMiddle,
   IconCheck,
@@ -32,7 +31,7 @@ const ConversationItemForm = ({
   const form = useForm<ConversationItemFormType>({
     initialValues: {
       conversation_id: conversationId,
-      character: '',
+      character: characters[0] || '',
       phrase: '',
       meaning: '',
     },
@@ -76,18 +75,22 @@ const ConversationItemForm = ({
   }, [initItem]);
 
   return (
-    <Box>
+    <Box px="sm">
       <form onSubmit={form.onSubmit(onItemSubmit)}>
-        <Select
-          withAsterisk
-          label="Character"
-          placeholder="Select one"
-          leftSection={<IconAdjustmentsStar />}
+        <SegmentedControl
+          radius="lg"
+          w="100%"
+          size="xs"
           data={characters}
+          styles={{
+            control: {
+              textTransform: 'capitalize',
+            },
+          }}
           {...form.getInputProps('character')}
         />
 
-        <VoiceInput
+        <VoiceTextarea
           withAsterisk
           mt="md"
           label="Phrase"
@@ -97,7 +100,7 @@ const ConversationItemForm = ({
           {...form.getInputProps('phrase')}
         />
 
-        <VoiceInput
+        <VoiceTextarea
           withAsterisk
           mt="md"
           voiceLang="fa-IR"

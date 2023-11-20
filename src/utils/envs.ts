@@ -6,4 +6,7 @@ export const Envs = {
   api: {
     url: 'http://localhost:3000',
   },
+  assets: {
+    url: 'https://sv-cdn.netlify.app',
+  },
 };

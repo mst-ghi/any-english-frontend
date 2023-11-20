@@ -50,7 +50,6 @@ const PageHeader = () => {
                 return (
                   <Link href={el.href} key={`${el.label}-${idx}`}>
                     <Text
-                      size="xl"
                       fw={500}
                       c={pathname === el.href ? 'blue' : undefined}
                     >
