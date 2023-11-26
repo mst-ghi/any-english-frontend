@@ -1,5 +1,4 @@
 const packages = [
-  '@lottiefiles/react-lottie-player',
   '@mantine/core',
   '@mantine/carousel',
   '@mantine/form',
@@ -9,9 +8,6 @@ const packages = [
   '@tabler/icons-react',
   '@tanstack/react-query',
   'react-speech-kit',
-  'framer-motion',
-  'immer',
-  'zustand',
 ];
 
 /** @type {import('next').NextConfig} */
@@ -26,7 +22,6 @@ const nextConfig = {
 
   experimental: {
     optimizePackageImports: packages,
-    serverComponentsExternalPackages: packages,
   },
 };
 

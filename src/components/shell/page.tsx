@@ -42,10 +42,11 @@ const Page = ({
         {(styles) => (
           <Box
             px={isDesktop ? 'xs' : 0}
-            mx={isDesktop ? 'xs' : 0}
+            mb={isDesktop ? 'sm' : 0}
+            mx="xs"
             style={styles}
           >
-            <Box>{children}</Box>
+            {children}
 
             {isDesktop && (
               <Affix position={{ bottom: 20, left: 20 }}>

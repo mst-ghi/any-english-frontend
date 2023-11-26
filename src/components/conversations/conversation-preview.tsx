@@ -53,7 +53,7 @@ const ConversationPreview = ({
 
   return (
     <Card withBorder radius="lg" w="100%">
-      <Alert radius="lg" mb="xs" color="gray" pb={4}>
+      <Alert radius="lg" mb="xs" color="gray" pb={4} pt={0}>
         <Flex direction="row" align="center" gap="lg" justify="space-between">
           <Box style={{ flex: 1 }}>
             <Text size="lg" fw={500}>

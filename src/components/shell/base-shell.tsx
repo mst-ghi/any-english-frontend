@@ -1,4 +1,9 @@
-import { AppShell, Box, useMantineColorScheme } from '@mantine/core';
+import {
+  AppShell,
+  Box,
+  ScrollArea,
+  useMantineColorScheme,
+} from '@mantine/core';
 import { useApp, useThemeStyle } from '@/hooks';
 import { PageHeader } from '.';
 import { FadeTransition, FullLoader } from '..';
@@ -9,7 +14,7 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
   const { colorScheme } = useMantineColorScheme();
 
   return (
-    <AppShell padding={isDesktop ? 'lg' : 'sm'}>
+    <AppShell>
       {isLoading && <FullLoader />}
 
       <FadeTransition mounted={!isLoading}>
@@ -19,8 +24,8 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
 
         <AppShell.Main
           bg={colorScheme === 'light' ? 'gray.1' : 'dark.5'}
-          pt={isDesktop ? 84 : 72}
           pos="relative"
+          pt={60}
         >
           <Box
             w="100%"
@@ -35,7 +40,9 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
               backgroundPosition: 'top right',
             }}
           />
-          {children}
+          <ScrollArea type="always" h={`calc(100vh - 50px)`}>
+            <Box py="md">{children}</Box>
+          </ScrollArea>
         </AppShell.Main>
       </FadeTransition>
     </AppShell>

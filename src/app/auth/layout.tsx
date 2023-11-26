@@ -18,7 +18,7 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <Fragment>
       {(isLoading || isLoggedIn) && <FullLoader />}
-      {!isLoading && !isLoggedIn && <EmptyPage>{children}</EmptyPage>}
+      {!isLoading && !isLoggedIn && <EmptyPage pt="xl">{children}</EmptyPage>}
     </Fragment>
   );
 }

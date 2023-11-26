@@ -9,6 +9,10 @@
   font-family: 'IranSans', Arial, Helvetica, sans-serif !important;
 }
 
+html {
+  overflow: hidden;
+}
+
 a {
   text-decoration: none;
   color: inherit;
