@@ -19,6 +19,7 @@ import { IconPlus } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
 import CreationActionHeader from './creation-action-header';
+import SearchActionHeader from './search-action-header';
 
 const links: { label: string; href: string }[] = [
   { label: 'Words', href: '/words' },
@@ -91,6 +92,8 @@ const PageHeader = () => {
           )}
 
           <CreationActionHeader />
+
+          <SearchActionHeader />
 
           <UserAvatarHeader />
         </Flex>

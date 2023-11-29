@@ -18,7 +18,7 @@ const CreationActionHeader = () => {
   return (
     <Menu withArrow withinPortal position="bottom-end">
       <Menu.Target>
-        <ActionIcon size={38} radius="md" color="grape">
+        <ActionIcon size={38} radius="md">
           <IconPlus size={28} />
         </ActionIcon>
       </Menu.Target>

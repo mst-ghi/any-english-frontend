@@ -9,11 +9,11 @@ type SearchInputProps = TextInputProps & {
 };
 
 const SearchInput = ({
-  placeholder = 'Search Word',
+  placeholder = 'Search for the text you want',
   w = '100%',
   size = 'xl',
   radius = 'xl',
-  basePath = '/words',
+  basePath = '/search',
 }: SearchInputProps) => {
   const Router = useRouter();
   const [searchValue, setSearchValue] = useDebouncedState<string | undefined>(

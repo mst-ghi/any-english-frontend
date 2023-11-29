@@ -4,12 +4,11 @@ import {
   ScrollArea,
   useMantineColorScheme,
 } from '@mantine/core';
-import { useApp, useThemeStyle } from '@/hooks';
+import { useApp } from '@/hooks';
 import { PageHeader } from '.';
 import { FadeTransition, FullLoader } from '..';
 
 const BaseShell = ({ children }: { children?: React.ReactNode }) => {
-  const { isDesktop } = useThemeStyle();
   const { isLoading } = useApp();
   const { colorScheme } = useMantineColorScheme();
 

@@ -29,6 +29,10 @@ const WordsPage = () => {
   };
 
   useEffect(() => {
+    setSearchValue(searchParams.get('q') || '');
+  }, [searchParams.get('q')]);
+
+  useEffect(() => {
     if (searchValue) {
       Router.push(`/words?q=${searchValue}`);
     } else {

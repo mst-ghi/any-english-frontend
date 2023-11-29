@@ -26,6 +26,10 @@ const PhrasesPage = () => {
   };
 
   useEffect(() => {
+    setSearchValue(searchParams.get('q') || '');
+  }, [searchParams.get('q')]);
+
+  useEffect(() => {
     if (searchValue) {
       Router.push(`/phrases?q=${searchValue}`);
     } else {

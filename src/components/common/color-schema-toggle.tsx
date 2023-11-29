@@ -16,11 +16,7 @@ const ColorSchemeToggle = () => {
       onClick={() =>
         setColorScheme(computedColorScheme === 'light' ? 'dark' : 'light')
       }
-      h={38}
-      w={38}
-      variant="default"
-      size="lg"
-      aria-label="Toggle color scheme"
+      size={38}
     >
       {computedColorScheme === 'light' ? <IconMoon /> : <IconSun />}
     </ActionIcon>

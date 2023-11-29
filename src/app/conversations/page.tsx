@@ -29,6 +29,10 @@ const ConversationsPage = () => {
   };
 
   useEffect(() => {
+    setSearchValue(searchParams.get('q') || '');
+  }, [searchParams.get('q')]);
+
+  useEffect(() => {
     if (searchValue) {
       Router.push(`/conversations?q=${searchValue}`);
     } else {
