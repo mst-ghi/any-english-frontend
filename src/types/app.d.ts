@@ -66,7 +66,7 @@ export declare global {
     lightners?: ILightner[];
   }
 
-  type TLightnerLevel = 0 | 1 | 2 | 3 | 4;
+  type TLightnerLevel = 0 | 1 | 2 | 3 | 4 | number;
   type TLightnerType = 'word' | 'phrase';
 
   interface ILightner {

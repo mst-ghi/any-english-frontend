@@ -2,6 +2,7 @@ import { useApp, useLightnerActions } from '@/hooks';
 import { ActionIcon } from '@mantine/core';
 import { showNotification } from '@mantine/notifications';
 import { IconBrain } from '@tabler/icons-react';
+import { useQueryClient } from '@tanstack/react-query';
 import { useMemo } from 'react';
 
 type WordLightnerActionProps = {
@@ -16,6 +17,7 @@ const WordLightnerAction = ({
   onReload,
 }: WordLightnerActionProps) => {
   const { isLoggedIn } = useApp();
+  const queryClient = useQueryClient();
   const { isProcessing, upsertLightnerWord } = useLightnerActions();
 
   const includingLightner = useMemo(() => {
@@ -36,6 +38,8 @@ const WordLightnerAction = ({
         message: 'The word added to your lightner',
       });
     }
+
+    queryClient.invalidateQueries({ queryKey: ['lightners'], stale: true });
 
     onReload();
   };

@@ -108,29 +108,31 @@ const WordCard = ({
 
           {isAdmin && (
             <Fragment>
-              <ActionIcon
-                size="md"
-                radius="md"
-                h={28}
-                onClick={() => {
-                  openModal({
-                    title: 'New Phrase',
-                    children: (
-                      <PhraseForm
-                        word={wordData}
-                        onSubmitDone={async () => {
-                          setWordData(await fetchWord(wordData.id));
-                          setIsPhraseVisible(true);
-                        }}
-                      />
-                    ),
-                    closeOnClickOutside: false,
-                    closeOnEscape: false,
-                  });
-                }}
-              >
-                <IconPlus size={18} />
-              </ActionIcon>
+              {!compact && (
+                <ActionIcon
+                  size="md"
+                  radius="md"
+                  h={28}
+                  onClick={() => {
+                    openModal({
+                      title: 'New Phrase',
+                      children: (
+                        <PhraseForm
+                          word={wordData}
+                          onSubmitDone={async () => {
+                            setWordData(await fetchWord(wordData.id));
+                            setIsPhraseVisible(true);
+                          }}
+                        />
+                      ),
+                      closeOnClickOutside: false,
+                      closeOnEscape: false,
+                    });
+                  }}
+                >
+                  <IconPlus size={18} />
+                </ActionIcon>
+              )}
 
               <ActionIcon
                 size="md"

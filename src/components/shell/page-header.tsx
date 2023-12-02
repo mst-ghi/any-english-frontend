@@ -85,17 +85,17 @@ const PageHeader = () => {
         <Flex direction="row" align="center" gap="md">
           <ColorSchemeToggle />
 
-          {!isLoggedIn && (
-            <Button variant="outline" component={Link} href="/auth/login">
-              Login / Register
-            </Button>
-          )}
-
           <CreationActionHeader />
 
           <SearchActionHeader />
 
           <UserAvatarHeader />
+
+          {!isLoggedIn && (
+            <Button variant="outline" component={Link} href="/auth/login">
+              Login / Register
+            </Button>
+          )}
         </Flex>
       </Flex>
 

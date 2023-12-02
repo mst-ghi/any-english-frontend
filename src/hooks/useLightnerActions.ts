@@ -1,6 +1,8 @@
+import { useQueryClient } from '@tanstack/react-query';
 import useRequest from './useRequest';
 
 const useLightnerActions = () => {
+  const queryClient = useQueryClient();
   const { callRequest, isCalling } = useRequest();
 
   const upsertLightnerWord = async (wordId: string, level: TLightnerLevel) => {
@@ -10,6 +12,8 @@ const useLightnerActions = () => {
         level,
       },
     });
+
+    queryClient.invalidateQueries({ queryKey: ['lightners'], stale: true });
   };
 
   const upsertLightnerPhrase = async (
@@ -22,6 +26,8 @@ const useLightnerActions = () => {
         level,
       },
     });
+
+    queryClient.invalidateQueries({ queryKey: ['lightners'], stale: true });
   };
 
   return {

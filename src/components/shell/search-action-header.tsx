@@ -1,5 +1,12 @@
 import { Fragment, useEffect, useState } from 'react';
-import { ActionIcon, Flex, Loader, Stack, Text } from '@mantine/core';
+import {
+  ActionIcon,
+  Flex,
+  Highlight,
+  Loader,
+  Stack,
+  Text,
+} from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { Spotlight, spotlight } from '@mantine/spotlight';
 import { useFetchSearch } from '@/hooks';
@@ -42,38 +49,53 @@ const SearchActionHeader = () => {
                 <Text size="xs" c="gray.7">
                   Words
                 </Text>
+
                 {data.words.map((word) => {
                   return (
-                    <Link
+                    <Highlight
+                      component={Link}
                       key={`word-${word.id}`}
                       href={`/words?q=${word.word}`}
                       className="search-item"
+                      highlight={query}
+                      fw={500}
+                      tt="capitalize"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 4,
+                      }}
                     >
-                      <Text fw={500} tt="capitalize">
-                        # {word.word}
-                      </Text>
-                    </Link>
+                      {'# ' + word.word}
+                    </Highlight>
                   );
                 })}
               </Flex>
             )}
 
-            {data?.words[0] && (
+            {data?.phrases[0] && (
               <Flex direction="column" gap={4}>
                 <Text size="xs" c="gray.7">
                   Phrases
                 </Text>
                 {data.phrases.map((phrase) => {
                   return (
-                    <Link
+                    <Highlight
+                      component={Link}
                       key={`phrase-${phrase.id}`}
                       href={`/phrases?q=${phrase.phrase}`}
                       className="search-item"
+                      fw={500}
+                      tt="capitalize"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 4,
+                      }}
+                      highlight={query}
                     >
-                      <Text fw={500} tt="capitalize">
-                        # {phrase.phrase}
-                      </Text>
-                    </Link>
+                      {'# ' + phrase.phrase}
+                    </Highlight>
                   );
                 })}
               </Flex>
@@ -86,15 +108,22 @@ const SearchActionHeader = () => {
                 </Text>
                 {data.conversations.map((conversation) => {
                   return (
-                    <Link
+                    <Highlight
+                      component={Link}
                       key={`conversation-${conversation.id}`}
                       href={`/conversations?q=${conversation.title}`}
                       className="search-item"
+                      fw={500}
+                      tt="capitalize"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 4,
+                      }}
+                      highlight={query}
                     >
-                      <Text fw={500} tt="capitalize">
-                        # {conversation.title}
-                      </Text>
-                    </Link>
+                      {'# ' + conversation.title}
+                    </Highlight>
                   );
                 })}
               </Flex>

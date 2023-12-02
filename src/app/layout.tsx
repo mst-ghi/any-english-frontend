@@ -1,5 +1,6 @@
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';
+import '@mantine/carousel/styles.css';
 import '@/styles/app.css';
 
 import { ColorSchemeScript } from '@mantine/core';
