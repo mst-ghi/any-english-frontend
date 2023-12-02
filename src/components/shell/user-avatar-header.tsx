@@ -36,22 +36,6 @@ const UserAvatarHeader = () => {
         </Menu.Item>
 
         <Menu.Item
-          leftSection={<IconBulb size={20} />}
-          component={Link}
-          href="/profile/words"
-        >
-          My Words
-        </Menu.Item>
-
-        <Menu.Item
-          leftSection={<IconBulb size={20} />}
-          component={Link}
-          href="/profile/phrases"
-        >
-          My Phrases
-        </Menu.Item>
-
-        <Menu.Item
           color="red"
           leftSection={<IconLogout size={20} />}
           onClick={() => {

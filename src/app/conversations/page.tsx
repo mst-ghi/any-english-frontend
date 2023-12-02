@@ -1,6 +1,6 @@
 'use client';
 import { ImageStates, Page, ConversationPreview } from '@/components';
-import { useFetchConversations } from '@/hooks';
+import { useApp, useFetchConversations } from '@/hooks';
 import { Flex, Group, Pagination, TextInput } from '@mantine/core';
 import { useDebouncedState } from '@mantine/hooks';
 import { IconSearch } from '@tabler/icons-react';
@@ -10,6 +10,7 @@ import { Fragment, useEffect, useState } from 'react';
 
 const ConversationsPage = () => {
   const Router = useRouter();
+  const { statsCount } = useApp();
   const searchParams = useSearchParams();
 
   const [page, setPage] = useState(1);
@@ -48,7 +49,9 @@ const ConversationsPage = () => {
           radius="md"
           defaultValue={searchValue}
           leftSection={<IconSearch />}
-          placeholder={`Type to search on conversations`}
+          placeholder={`Type to search on ${
+            statsCount.conversationsCount || 0
+          } conversations`}
           onChange={(e: any) => {
             onSearchAction(e.target.value);
           }}

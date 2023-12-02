@@ -6,16 +6,16 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 
 const useThemeStyle = () => {
+  const theme = useMantineTheme();
+
   const { setColorScheme } = useMantineColorScheme();
   const colorSchema = useComputedColorScheme('light', {
     getInitialValueInEffect: true,
   });
 
-  const isMobile = useMediaQuery('(max-width: 768px)', true, {
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`, true, {
     getInitialValueInEffect: false,
   });
-
-  const theme = useMantineTheme();
 
   return {
     theme,

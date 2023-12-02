@@ -31,7 +31,7 @@ const PageHeader = () => {
   const pathname = usePathname();
   const [opened, { open, close }] = useDisclosure();
   const { isDesktop, isMobile } = useThemeStyle();
-  const { isLoggedIn, isAdmin, statsCount } = useApp();
+  const { isLoggedIn, isAdmin } = useApp();
 
   useEffect(() => {
     close();
@@ -55,24 +55,6 @@ const PageHeader = () => {
                       c={pathname === el.href ? 'blue' : undefined}
                     >
                       {el.label}
-                      {statsCount.wordsCount && el.href === '/words' && (
-                        <span style={{ marginLeft: 4, fontSize: 16 }}>
-                          &#9758; {statsCount.wordsCount}
-                        </span>
-                      )}
-
-                      {statsCount.phrasesCount && el.href === '/phrases' && (
-                        <span style={{ marginLeft: 4, fontSize: 16 }}>
-                          &#9758; {statsCount.phrasesCount}
-                        </span>
-                      )}
-
-                      {statsCount.conversationsCount &&
-                        el.href === '/conversations' && (
-                          <span style={{ marginLeft: 4, fontSize: 16 }}>
-                            &#9758; {statsCount.conversationsCount}
-                          </span>
-                        )}
                     </Text>
                   </Link>
                 );
@@ -126,24 +108,6 @@ const PageHeader = () => {
                   c={pathname === el.href ? 'blue' : undefined}
                 >
                   {el.label}
-                  {statsCount.wordsCount && el.href === '/words' && (
-                    <span style={{ marginLeft: 4, fontSize: 16 }}>
-                      &#9758; {statsCount.wordsCount}
-                    </span>
-                  )}
-
-                  {statsCount.phrasesCount && el.href === '/phrases' && (
-                    <span style={{ marginLeft: 4, fontSize: 16 }}>
-                      &#9758; {statsCount.phrasesCount}
-                    </span>
-                  )}
-
-                  {statsCount.conversationsCount &&
-                    el.href === '/conversations' && (
-                      <span style={{ marginLeft: 4, fontSize: 16 }}>
-                        &#9758; {statsCount.conversationsCount}
-                      </span>
-                    )}
                 </Text>
               </Link>
             );

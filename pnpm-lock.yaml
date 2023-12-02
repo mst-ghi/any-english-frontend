@@ -10,7 +10,7 @@ dependencies:
     version: 3.5.3(react@18.2.0)
   '@mantine/carousel':
     specifier: ^7.2.2
-    version: 7.2.2(@mantine/core@7.2.2)(@mantine/hooks@7.2.2)(embla-carousel-react@8.0.0-rc14)(react@18.2.0)
+    version: 7.2.2(@mantine/core@7.2.2)(@mantine/hooks@7.2.2)(embla-carousel-react@7.1.0)(react@18.2.0)
   '@mantine/core':
     specifier: ^7.2.2
     version: 7.2.2(@mantine/hooks@7.2.2)(@types/react@18.2.40)(react-dom@18.2.0)(react@18.2.0)
@@ -42,8 +42,8 @@ dependencies:
     specifier: ^3.0.6
     version: 3.0.6
   embla-carousel-react:
-    specifier: 8.0.0-rc14
-    version: 8.0.0-rc14(react@18.2.0)
+    specifier: 7.1.0
+    version: 7.1.0(react@18.2.0)
   framer-motion:
     specifier: ^10.16.12
     version: 10.16.12(react-dom@18.2.0)(react@18.2.0)
@@ -241,7 +241,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@mantine/carousel@7.2.2(@mantine/core@7.2.2)(@mantine/hooks@7.2.2)(embla-carousel-react@8.0.0-rc14)(react@18.2.0):
+  /@mantine/carousel@7.2.2(@mantine/core@7.2.2)(@mantine/hooks@7.2.2)(embla-carousel-react@7.1.0)(react@18.2.0):
     resolution: {integrity: sha512-u59Fwn2RiMRmKe9eRe2tnlVInGe/nJGW7U1sZ7aZiHM6A5U/m8VBii0obOhl8bGcxNyBgNQYfDW5vZfOAl+2zg==}
     peerDependencies:
       '@mantine/core': 7.2.2
@@ -251,7 +251,7 @@ packages:
     dependencies:
       '@mantine/core': 7.2.2(@mantine/hooks@7.2.2)(@types/react@18.2.40)(react-dom@18.2.0)(react@18.2.0)
       '@mantine/hooks': 7.2.2(react@18.2.0)
-      embla-carousel-react: 8.0.0-rc14(react@18.2.0)
+      embla-carousel-react: 7.1.0(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -945,26 +945,17 @@ packages:
     resolution: {integrity: sha512-ilkD8YEnnGh1zJ240uJsW7AzE+2qpbOUYjacomn3AvJ6J4JhKGSZ2nh4wUIXPZrEPppaCLx5jFe8T89Rk8tQ7w==}
     dev: false
 
-  /embla-carousel-react@8.0.0-rc14(react@18.2.0):
-    resolution: {integrity: sha512-2b9vXACEcn0qja4QyaFMfCgFbFhumV3krOCGr9+jlQiuXt5z/EyfiYYziDsm70DhTtxtg/uKEGflIqZSfWRYKg==}
+  /embla-carousel-react@7.1.0(react@18.2.0):
+    resolution: {integrity: sha512-tbYRPRZSDNd2QLNqYDcArAakGIxtUbhS7tkP0dGXktXHGgcX+3ji3VrOUTOftBiujZrMV8kRxtrRUe/1soloIQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 8.0.0-rc14
-      embla-carousel-reactive-utils: 8.0.0-rc14(embla-carousel@8.0.0-rc14)
+      embla-carousel: 7.1.0
       react: 18.2.0
     dev: false
 
-  /embla-carousel-reactive-utils@8.0.0-rc14(embla-carousel@8.0.0-rc14):
-    resolution: {integrity: sha512-r153bynAo9eTBuWWggPWLYnE9xqVOYmkkeMbAuGX8pkUisJN8aTLMW9b7CYOzjURRB7z85EmYRbeBg+axQzc9g==}
-    peerDependencies:
-      embla-carousel: 8.0.0-rc14
-    dependencies:
-      embla-carousel: 8.0.0-rc14
-    dev: false
-
-  /embla-carousel@8.0.0-rc14:
-    resolution: {integrity: sha512-/NLkMFZ7xKryRVYeUjmhbfV63Vr07saPBDwAX2TPMbcaiWwfQfU5Xsc2AiCMZANtwmzsjRK6gSBa7hOy/VXu6g==}
+  /embla-carousel@7.1.0:
+    resolution: {integrity: sha512-Bh8Pa8NWzgugLkf8sAGexQlBCNDFaej5BXiKgQdRJ1mUC9NWBrw9Z23YVPVGkguWoz5LMjZXXFVGCobl3UPt/Q==}
     dev: false
 
   /emoji-regex@9.2.2:

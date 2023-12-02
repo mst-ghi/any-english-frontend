@@ -9,11 +9,12 @@ import {
 } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
 import { Spotlight, spotlight } from '@mantine/spotlight';
-import { useFetchSearch } from '@/hooks';
+import { useApp, useFetchSearch } from '@/hooks';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 const SearchActionHeader = () => {
+  const { statsCount } = useApp();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState('');
@@ -34,6 +35,29 @@ const SearchActionHeader = () => {
       </ActionIcon>
 
       <Spotlight.Root query={query} onQueryChange={setQuery}>
+        {statsCount && (
+          <Flex
+            direction="row"
+            align="center"
+            justify="space-between"
+            px="sm"
+            pt="md"
+            mb={-6}
+          >
+            <Text size="xs" c="gray.7">
+              #Words <strong>{statsCount?.wordsCount}</strong>
+            </Text>
+
+            <Text size="xs" c="gray.7">
+              #Phrases <strong>{statsCount?.phrasesCount}</strong>
+            </Text>
+
+            <Text size="xs" c="gray.7">
+              #Conversations <strong>{statsCount?.conversationsCount}</strong>
+            </Text>
+          </Flex>
+        )}
+
         <Spotlight.Search
           mx="xs"
           mt="xs"
