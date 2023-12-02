@@ -2,7 +2,11 @@ import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 export type HelpyType = { active?: boolean; search?: string };
-export type StatsCountType = { wordsCount?: number; phrasesCount?: number };
+export type StatsCountType = {
+  wordsCount?: number;
+  phrasesCount?: number;
+  conversationsCount?: number;
+};
 
 export interface States {
   helpy: HelpyType;

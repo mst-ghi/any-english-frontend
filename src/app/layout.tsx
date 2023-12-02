@@ -14,7 +14,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { isInvalidToken, user, wordsCount, phrasesCount } = await initData();
+  const { isInvalidToken, user, wordsCount, phrasesCount, conversationsCount } =
+    await initData();
 
   return (
     <html lang="en">
@@ -29,7 +30,7 @@ export default async function RootLayout({
         <RootEntry
           isInvalidToken={isInvalidToken}
           user={user}
-          stats={{ wordsCount, phrasesCount }}
+          stats={{ wordsCount, phrasesCount, conversationsCount }}
         >
           {children}
         </RootEntry>

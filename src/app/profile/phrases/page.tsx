@@ -87,8 +87,8 @@ const PhrasesLightnerPage = () => {
                   )}
 
                   {!el.values[0] && (
-                    <Center>
-                      <ImageStates name="emptyBox" width={240} />
+                    <Center my="md">
+                      <ImageStates name="emptyBox" width={508} />
                     </Center>
                   )}
                 </Tabs.Panel>

@@ -26,7 +26,11 @@ const RootEntry = ({
   isInvalidToken?: boolean;
   user?: IUser;
   children: React.ReactNode;
-  stats?: { wordsCount: number; phrasesCount: number };
+  stats?: {
+    wordsCount: number;
+    phrasesCount: number;
+    conversationsCount: number;
+  };
 }) => {
   const { setIsInvalidToken, setUser, setStatsCount, setIsLoading } = useApp();
 

@@ -41,47 +41,40 @@ const fetchUserInitData = async () => {
 const fetchStats = async () => {
   let wordsCount = 0;
   let phrasesCount = 0;
+  let conversationsCount = 0;
   let response;
 
   try {
-    response = await fetch(`${Envs.api.url}/api/v1/stats/words/count`).then(
-      (res) => res.json(),
+    response = await fetch(`${Envs.api.url}/api/v1/stats`).then((res) =>
+      res.json(),
     );
 
     if (response.status === 200) {
-      wordsCount = response.count;
+      wordsCount = response.words;
+      phrasesCount = response.phrases;
+      conversationsCount = response.conversations;
     }
   } catch (error) {
-    console.log('fetch words count error: ', error.message);
-  }
-
-  try {
-    response = await fetch(`${Envs.api.url}/api/v1/stats/phrases/count`).then(
-      (res) => res.json(),
-    );
-
-    if (response.status === 200) {
-      phrasesCount = response.count;
-    }
-  } catch (error) {
-    console.log('fetch phrases count error: ', error.message);
+    console.log('fetch all stats error: ', error.message);
   }
 
   return {
     wordsCount,
     phrasesCount,
+    conversationsCount,
   };
 };
 
 const initData = async () => {
   const { user, isInvalidToken } = await fetchUserInitData();
-  const { wordsCount, phrasesCount } = await fetchStats();
+  const { wordsCount, phrasesCount, conversationsCount } = await fetchStats();
 
   return {
     user,
     isInvalidToken,
     wordsCount,
     phrasesCount,
+    conversationsCount,
   };
 };
 

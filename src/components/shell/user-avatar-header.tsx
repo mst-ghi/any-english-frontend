@@ -38,7 +38,7 @@ const UserAvatarHeader = () => {
         <Menu.Item
           leftSection={<IconBulb size={20} />}
           component={Link}
-          href="/profile/my-lightner/words"
+          href="/profile/words"
         >
           My Words
         </Menu.Item>
@@ -46,7 +46,7 @@ const UserAvatarHeader = () => {
         <Menu.Item
           leftSection={<IconBulb size={20} />}
           component={Link}
-          href="/profile/my-lightner/phrases"
+          href="/profile/phrases"
         >
           My Phrases
         </Menu.Item>

@@ -66,6 +66,13 @@ const PageHeader = () => {
                           &#9758; {statsCount.phrasesCount}
                         </span>
                       )}
+
+                      {statsCount.conversationsCount &&
+                        el.href === '/conversations' && (
+                          <span style={{ marginLeft: 4, fontSize: 16 }}>
+                            &#9758; {statsCount.conversationsCount}
+                          </span>
+                        )}
                     </Text>
                   </Link>
                 );
@@ -85,9 +92,9 @@ const PageHeader = () => {
         <Flex direction="row" align="center" gap="md">
           <ColorSchemeToggle />
 
-          <CreationActionHeader />
-
           <SearchActionHeader />
+
+          <CreationActionHeader />
 
           <UserAvatarHeader />
 
@@ -130,6 +137,13 @@ const PageHeader = () => {
                       &#9758; {statsCount.phrasesCount}
                     </span>
                   )}
+
+                  {statsCount.conversationsCount &&
+                    el.href === '/conversations' && (
+                      <span style={{ marginLeft: 4, fontSize: 16 }}>
+                        &#9758; {statsCount.conversationsCount}
+                      </span>
+                    )}
                 </Text>
               </Link>
             );

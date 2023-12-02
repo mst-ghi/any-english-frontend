@@ -27,11 +27,20 @@ const useFetchData = () => {
     return response?.conversation;
   };
 
+  const fetchLightnerCounts = async () => {
+    const response = await callRequest<{ word_id: number; phrase_id: number }>(
+      'GET',
+      `/api/v1/lightner/counts`,
+    );
+    return response;
+  };
+
   return {
     isCalling,
     fetchWord,
     fetchPhrase,
     fetchConversation,
+    fetchLightnerCounts,
   };
 };
 
