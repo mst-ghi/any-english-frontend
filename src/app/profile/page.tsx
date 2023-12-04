@@ -33,7 +33,7 @@ const ProfilePage = () => {
 
   return (
     <Page title={user.fullname} loading={isFetching}>
-      <Card>
+      <Card withBorder>
         <SimpleGrid
           cols={{ base: 1, md: 2 }}
           spacing="lg"
@@ -50,7 +50,7 @@ const ProfilePage = () => {
                 {user.fullname}
               </Title>
 
-              <Title order={5} c="gray" fw={400}>
+              <Title order={5} fw={400}>
                 {user.email}
               </Title>
             </Flex>
@@ -95,7 +95,7 @@ const ProfilePage = () => {
           </Flex>
         </SimpleGrid>
 
-        <Box px={isDesktop ? 'md' : undefined}>
+        <Box mt="lg" px={isDesktop ? 'md' : undefined}>
           <MyLightner type={lightner} />
         </Box>
       </Card>

@@ -1,3 +1,5 @@
+@import './bg.css';
+
 @font-face {
   font-family: 'IranSans';
   src: url('/fonts/iransans/IRANSansWeb.ttf') format('truetype');
@@ -65,4 +67,8 @@ a {
 
 .search-item:hover {
   background-color: var(--mantine-color-gray-2);
+}
+
+.search-item::first-letter {
+  text-transform: uppercase;
 }

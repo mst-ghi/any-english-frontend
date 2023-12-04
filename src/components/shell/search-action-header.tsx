@@ -1,17 +1,18 @@
 import { Fragment, useEffect, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { IconSearch } from '@tabler/icons-react';
+import { Spotlight, spotlight } from '@mantine/spotlight';
+import { useApp, useFetchSearch } from '@/hooks';
+import Link from 'next/link';
 import {
   ActionIcon,
+  Box,
   Flex,
   Highlight,
   Loader,
   Stack,
   Text,
 } from '@mantine/core';
-import { IconSearch } from '@tabler/icons-react';
-import { Spotlight, spotlight } from '@mantine/spotlight';
-import { useApp, useFetchSearch } from '@/hooks';
-import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
 
 const SearchActionHeader = () => {
   const { statsCount } = useApp();
@@ -76,22 +77,26 @@ const SearchActionHeader = () => {
 
                 {data.words.map((word) => {
                   return (
-                    <Highlight
-                      component={Link}
+                    <Box
                       key={`word-${word.id}`}
-                      href={`/words?q=${word.word}`}
-                      className="search-item"
-                      highlight={query}
-                      fw={500}
-                      tt="capitalize"
                       style={{
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 4,
                       }}
                     >
-                      {'# ' + word.word}
-                    </Highlight>
+                      {'#'}
+                      <Highlight
+                        size="sm"
+                        component={Link}
+                        href={`/words?q=${word.word}`}
+                        className="search-item"
+                        highlight={query}
+                        fw={500}
+                      >
+                        {word.word}
+                      </Highlight>
+                    </Box>
                   );
                 })}
               </Flex>
@@ -104,22 +109,26 @@ const SearchActionHeader = () => {
                 </Text>
                 {data.phrases.map((phrase) => {
                   return (
-                    <Highlight
-                      component={Link}
+                    <Box
                       key={`phrase-${phrase.id}`}
-                      href={`/phrases?q=${phrase.phrase}`}
-                      className="search-item"
-                      fw={500}
-                      tt="capitalize"
                       style={{
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 4,
                       }}
-                      highlight={query}
                     >
-                      {'# ' + phrase.phrase}
-                    </Highlight>
+                      {'#'}
+                      <Highlight
+                        size="sm"
+                        component={Link}
+                        href={`/phrases?q=${phrase.phrase}`}
+                        className="search-item"
+                        fw={500}
+                        highlight={query}
+                      >
+                        {phrase.phrase}
+                      </Highlight>
+                    </Box>
                   );
                 })}
               </Flex>
@@ -132,22 +141,26 @@ const SearchActionHeader = () => {
                 </Text>
                 {data.conversations.map((conversation) => {
                   return (
-                    <Highlight
-                      component={Link}
+                    <Box
                       key={`conversation-${conversation.id}`}
-                      href={`/conversations?q=${conversation.title}`}
-                      className="search-item"
-                      fw={500}
-                      tt="capitalize"
                       style={{
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 4,
                       }}
-                      highlight={query}
                     >
-                      {'# ' + conversation.title}
-                    </Highlight>
+                      {'#'}
+                      <Highlight
+                        size="sm"
+                        component={Link}
+                        href={`/conversations?q=${conversation.title}`}
+                        className="search-item"
+                        fw={500}
+                        highlight={query}
+                      >
+                        {conversation.title}
+                      </Highlight>
+                    </Box>
                   );
                 })}
               </Flex>

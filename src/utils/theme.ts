@@ -13,5 +13,12 @@ export const BaseTheme: Partial<MantineThemeOverride> = {
         variant: 'light',
       },
     },
+    Card: {
+      defaultProps: {
+        style: {
+          opacity: 0.85,
+        },
+      },
+    },
   },
 };

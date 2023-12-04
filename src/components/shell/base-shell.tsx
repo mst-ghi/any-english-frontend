@@ -1,16 +1,11 @@
-import {
-  AppShell,
-  Box,
-  ScrollArea,
-  useMantineColorScheme,
-} from '@mantine/core';
-import { useApp } from '@/hooks';
+import { AppShell, Box, ScrollArea } from '@mantine/core';
+import { useApp, useThemeStyle } from '@/hooks';
 import { PageHeader } from '.';
 import { FadeTransition, FullLoader } from '..';
 
 const BaseShell = ({ children }: { children?: React.ReactNode }) => {
   const { isLoading } = useApp();
-  const { colorScheme } = useMantineColorScheme();
+  const { isLightTheme } = useThemeStyle();
 
   return (
     <AppShell>
@@ -22,7 +17,7 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
         </AppShell.Header>
 
         <AppShell.Main
-          bg={colorScheme === 'light' ? 'gray.1' : 'dark.5'}
+          bg={isLightTheme ? 'gray.1' : 'dark.5'}
           pos="relative"
           pt={60}
         >
@@ -39,6 +34,11 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
               backgroundPosition: 'top right',
             }}
           />
+
+          {Array.from({ length: 30 }).map((e, idx) => (
+            <div key={`firefly-${idx}`} className="firefly" />
+          ))}
+
           <ScrollArea type="always" h={`calc(100vh - 50px)`}>
             <Box py="md">{children}</Box>
           </ScrollArea>
