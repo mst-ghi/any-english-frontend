@@ -35,9 +35,10 @@ const BaseShell = ({ children }: { children?: React.ReactNode }) => {
             }}
           />
 
-          {Array.from({ length: 30 }).map((e, idx) => (
-            <div key={`firefly-${idx}`} className="firefly" />
-          ))}
+          {!isLightTheme &&
+            Array.from({ length: 30 }).map((e, idx) => (
+              <div key={`firefly-${idx}`} className="firefly" />
+            ))}
 
           <ScrollArea type="always" h={`calc(100vh - 50px)`}>
             <Box py="md">{children}</Box>

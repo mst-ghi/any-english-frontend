@@ -22,7 +22,7 @@ const WordPreview = ({
           size="sm"
           onClick={() => speak({ text: word.word, rate: 0.6 })}
         >
-          <IconVolume size={18} />
+          <IconVolume size={22} />
         </ActionIcon>
 
         <TextBlur
