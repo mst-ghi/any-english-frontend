@@ -5,7 +5,7 @@ import { Center } from '@mantine/core';
 const HomePage = () => {
   return (
     <Page title="Home">
-      <Center mih={360} style={{ display: 'flex', flexDirection: 'column' }}>
+      <Center mih={560} style={{ display: 'flex', flexDirection: 'column' }}>
         <Logo maw={400} mb="xl" />
         <SearchInput />
       </Center>
