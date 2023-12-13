@@ -81,7 +81,7 @@ const PageHeader = () => {
           <UserAvatarHeader />
 
           {!isLoggedIn && (
-            <Button variant="outline" component={Link} href="/auth/login">
+            <Button variant="light" component={Link} href="/auth/login">
               Login / Register
             </Button>
           )}
